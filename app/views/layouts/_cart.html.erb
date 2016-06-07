@@ -1,0 +1,1 @@
+<%= link_to '<i class="glyphicon glyphicon-shopping-cart"></i>'.html_safe + " #{current_order.try(:order_lines).try(:size)} Items in Cart ( #{number_to_currency current_order.try(:total)} )", carts_path, class: "btn btn-link" %>

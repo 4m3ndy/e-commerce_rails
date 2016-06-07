@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Order no:</strong>
+  <%= @order.order_no %>
+</p>
+
+<p>
+  <strong>Total:</strong>
+  <%= @order.total %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @order.date %>
+</p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @order.try(:customer).try(:first_name) + " " + @order.try(:customer).try(:last_name) %>
+</p>
+
+<p>
+  <strong>Order Status:</strong>
+  <% if @order.status == "0" %>
+    Unpaid - <%= link_to 'Checkout', new_charge_path(o_id: @order.id) %>
+<% else %>
+    Paid
+<% end %>
+</p>
+
+<%= link_to 'Back', orders_path %>
